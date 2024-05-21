@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "neo",
+  "version": "${version}",
+  "name": "Neo",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/nilonic/Neo"
+  },
+  "license": "MIT",
+  "icon": "assets/neo/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "nilon.neo.client.NeoClient"
+    ],
+    "main": [
+      "nilon.neo.Neo"
+    ]
+  },
+  "mixins": [
+    "neo.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
