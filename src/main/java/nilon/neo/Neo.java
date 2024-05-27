@@ -25,6 +25,8 @@ public class Neo implements ModInitializer {
     private int tickCount;
     private int errorCount = 0;
 
+    private static boolean isDebug;
+
     public static File luaScriptsDir;
 
     @Override
@@ -38,23 +40,19 @@ public class Neo implements ModInitializer {
             createDirectories();
 
             Log.info("Initializing Clientside commands...");
-            ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-                dispatcher.register(ClientCommandManager.literal("LuaVer")
-                        .executes(context -> {
-                            luaIntegration.printVer(context);
-                            return 0;
-                        }));
-            });
+            ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(ClientCommandManager.literal("LuaVer")
+                    .executes(context -> {
+                        luaIntegration.printVer(context);
+                        return 0;
+                    })));
 
-            ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-                dispatcher.register(ClientCommandManager.literal("RunLuaScript")
-                        .then(ClientCommandManager.argument("script name", StringArgumentType.greedyString())
-                                .executes(context -> {
-                                    String name = StringArgumentType.getString(context, "script name");
-                                    luaIntegration.runScript(name, context);
-                                    return 1;
-                                })));
-            });
+            ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(ClientCommandManager.literal("RunLuaScript")
+                    .then(ClientCommandManager.argument("script name", StringArgumentType.greedyString())
+                            .executes(context -> {
+                                String name = StringArgumentType.getString(context, "script name");
+                                luaIntegration.runScript(name, context);
+                                return 1;
+                            }))));
 
             Log.info("Initializing Hud...");
             HudRenderCallback.EVENT.register(HUD::renderHud);
@@ -106,5 +104,13 @@ public class Neo implements ModInitializer {
             lastTime = currentTime;
             tickCount = 0;
         }
+    }
+
+    public static boolean isDebug() {
+        return isDebug;
+    }
+
+    public static void toggleDebug() {
+        isDebug = !isDebug;
     }
 }

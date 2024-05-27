@@ -19,4 +19,9 @@ public abstract class MinecraftClientMixin {
 
         ci.setReturnValue(builder);
     }
+
+    @Inject(method = "isTelemetryEnabledByApi()Z", at = @At("HEAD"), cancellable = true)
+    public void isTelemetryEnabledByApi(CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(false);
+    }
 }
