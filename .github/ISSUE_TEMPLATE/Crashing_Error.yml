@@ -1,7 +1,7 @@
 name: Crashing Error
 description: For reporting an error that causes a crash
 labels: [Crashing Error]
-title: "[Crashing Error]"
+title: "[Crashing Error] <title>"
 body:
   - type: markdown
     attributes:
@@ -43,4 +43,6 @@ body:
         - label: I acknowledge that the uploaded information may contain identifiable details related to my computer system.
           required: true
         - label: I have attempted basic troubleshooting steps, such as disabling mods, ensuring all required mods are installed, and performing a clean boot of my computer.
+          required: true
+        - label: I have fully read the above section, and have **ensured i fully understood it's contents**
           required: true
