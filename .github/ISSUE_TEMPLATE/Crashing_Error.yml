@@ -1,42 +1,46 @@
 name: Crashing Error
-description: for reporting an error which causes a crash
+description: For reporting an error that causes a crash
 labels: [Crashing Error]
 title: "[Crashing Error]"
 body:
-- type: markdown
-  attributes:
-    value: |
-      # Reporting a crashing error
-      Hello, thank you for taking the time to report an error that has caused a crash
-      
-      ## Required to upload
-      1) crash log, found at `.minecraft/crash-reports/`
-      2) list of mods. just run `tree` or similar commands
-      3) list and contents of lua files
-      
-      ## upload guidelines
-      upload either:
-      1) bundled together as a .zip
-      2) as separate files (.txt, .png, etc.)
-      3) for LUA specifically, zip them up
-      
-      ###### guide to zip up files [here](https://support.microsoft.com/en-gb/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5)
-          
-      we are sorry that your usage of Neo has caused this error
+  - type: markdown
+    attributes:
+      value: |
+        # Reporting a Crashing Error
+        Hello! Thank you for taking the time to report an error that has caused a crash. Your feedback is valuable to us, and we are here to assist you in resolving this issue.
+        
+        ## Information Required for Reporting
+        Please ensure you have the following information ready to upload:
+        1. **Crash Log:** You can find the crash logs in the `.minecraft/crash-reports/` directory.
+        2. **List of Mods:** Generate a list of your installed mods by running the `tree` command or a similar command.
+        3. **LUA Files:** Provide the list and contents of any LUA files involved.
+        
+        ## Upload Guidelines
+        To help us assist you better, please follow these upload guidelines:
+        - **Preferred Method:** Bundle all the required files together in a single .zip file.
+        - **Alternative Methods:** If zipping is not possible, you may upload the files separately (e.g., .txt, .png, etc.). For LUA files, it is mandatory to zip them up before uploading.
+        
+        For instructions on how to zip files, please refer to this [guide](https://support.microsoft.com/en-gb/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5).
+        
+        We apologize for any inconvenience caused by this issue and appreciate your patience and cooperation.
 
-- type: textarea
-  id: upload-area
-  attributes:
+  - type: textarea
+    id: upload-area
+    attributes:
       label: Upload Area
-      description: upload your files here, please
-  validations:
-    required: true
-- type: checkboxes
-  id: agreements
-  attributes:
-    label: You must agree to the following
-    options:
-      - label: I agree that i have uploaded all required data, as outlined in the section labeled 'required to upload', and failure to do so will result in me not being able to receive support for this error
-        required: true
-      - label: I agree that any information i upload may contain identifiable information relating to my computer system
-        required: true
+      description: Please upload your files here.
+      placeholder: Drag and drop or select your crash log, mods list, and LUA files to upload.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Agreement and Confirmation
+      options:
+        - label: I confirm that I have uploaded all required data as outlined in the 'Information Required for Reporting' section. Failure to do so may result in delayed support for this error.
+          required: true
+        - label: I acknowledge that the uploaded information may contain identifiable details related to my computer system.
+          required: true
+        - label: I have attempted basic troubleshooting steps, such as disabling mods, ensuring all required mods are installed, and performing a clean boot of my computer.
+          required: true
