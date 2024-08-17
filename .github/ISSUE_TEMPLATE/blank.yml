@@ -1,0 +1,35 @@
+name: blank
+description: a blank issue. DO NOT USE THIS AS THIS IS THE BASE TEMPLATE FOR OTHER TEMPLATES
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # READ THIS BEFORE OPENING AN ISSUE
+
+        This form is A BASE TEMPLATE. YOUR ISSUE WILL BE CLOSED IF YOU IGNORE THIS.
+        
+        DO NOT USE THIS FORM.
+
+  - type: textarea
+    id: content
+    attributes:
+      label: Content
+    validations:
+      required: true
+
+    - type: checkboxes
+    id: agreement-check
+    attributes:
+      label: Request Agreement
+      options:
+        - label: I have read the requirements for opening an issue above
+          required: true
+
+      - type: checkboxes
+    id: agreement-check-2
+    attributes:
+      label: Submitted Agreement
+      options:
+        - label: I have submitted all required and requested items
+          required: true
