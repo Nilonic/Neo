@@ -10,7 +10,7 @@ body:
         This form is A BASE TEMPLATE. YOUR ISSUE WILL BE CLOSED IF YOU IGNORE THIS.
         
         DO NOT USE THIS FORM.
-
+        
   - type: textarea
     id: content
     attributes:
