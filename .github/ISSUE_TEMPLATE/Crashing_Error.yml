@@ -1,5 +1,7 @@
 name: Crashing Error
 description: for reporting an error which causes a crash
+labels: [Crashing Error]
+title: "[Crashing Error]"
 body:
 - type: markdown
   attributes:
@@ -10,14 +12,23 @@ body:
       ## Required to upload
       1) crash log, found at `.minecraft/crash-reports/`
       2) list of mods. just run `tree` or similar commands
+      3) list and contents of lua files
+      
+      ## upload guidelines
+      upload either:
+      1) bundled together as a .zip
+      2) as separate files (.txt, .png, etc.)
+      3) for LUA specifically, zip them up
+      
+      ###### guide to zip up files [here](https://support.microsoft.com/en-gb/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5)
           
       we are sorry that your usage of Neo has caused this error
 
 - type: textarea
-  id: crash-log
+  id: upload-area
   attributes:
-      label: Crash Log
-      description: check ## Required to upload for file location
+      label: Upload Area
+      description: upload your files here, please
   validations:
     required: true
 - type: checkboxes
@@ -25,7 +36,7 @@ body:
   attributes:
     label: You must agree to the following
     options:
-      - label: I agree that i have uploaded all required data, as outlined in the section labeled 'required to upload'
+      - label: I agree that i have uploaded all required data, as outlined in the section labeled 'required to upload', and failure to do so will result in me not being able to receive support for this error
         required: true
       - label: I agree that any information i upload may contain identifiable information relating to my computer system
         required: true
