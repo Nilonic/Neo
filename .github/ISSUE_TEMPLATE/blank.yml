@@ -6,14 +6,14 @@ title: "[tpl]"
 body:
 - type: markdown
   attributes:
-    value: "## Welcome!"
+    value: "# DO NOT USE THIS! THIS IS JUST A TEMPLATE WE USE TO CREATE MORE ISSUES!"
 
-  - type: checkboxes
-    id: agreements-lmao
-    attributes:
-      label: Agreements, please check both before continuing
-      options:
-        - label: I agree that my issue may go unanswered
-          required: true
-        - label: I agree that what is contained in the error log i have uploaded may contain information relating to my PC
-          required: true
+- type: checkboxes
+  id: agreements
+  attributes:
+    label: You must agree to the following
+    options:
+      - label: I agree that i have uploaded all required data, as outlined in the section labeled 'required to upload'
+        required: true
+      - label: I agree that any information i upload may contain identifiable information relating to my computer system
+        required: true
