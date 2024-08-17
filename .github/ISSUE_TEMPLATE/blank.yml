@@ -1,5 +1,7 @@
 name: blank
 description: a blank issue. DO NOT USE THIS AS THIS IS THE BASE TEMPLATE FOR OTHER TEMPLATES
+labels: [tpl]
+title: "[tpl]"
 
 body:
   - type: markdown
@@ -10,26 +12,13 @@ body:
         This form is A BASE TEMPLATE. YOUR ISSUE WILL BE CLOSED IF YOU IGNORE THIS.
         
         DO NOT USE THIS FORM.
-        
-  - type: textarea
-    id: content
-    attributes:
-      label: Content
-    validations:
-      required: true
 
     - type: checkboxes
-    id: agreement-check
-    attributes:
-      label: Request Agreement
-      options:
-        - label: I have read the requirements for opening an issue above
-          required: true
-
-      - type: checkboxes
-    id: agreement-check-2
-    attributes:
-      label: Submitted Agreement
-      options:
-        - label: I have submitted all required and requested items
-          required: true
+      id: agreements-lmao
+      attributes:
+        label: Agreements, please check both before continuing
+        options:
+          - label: I agree that my issue may go unanswered
+            required: true
+          - label: I agree that what is contained in the error log i have uploaded may contain information relating to my PC
+            required: true
