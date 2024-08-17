@@ -1,0 +1,31 @@
+name: Crashing Error
+description: for reporting an error which causes a crash
+body:
+- type: markdown
+  attributes:
+    value: |
+    # Reporting a crashing error
+    Hello, thank you for taking the time to report an error that has caused a crash
+    
+    ## Required to upload
+    1) crash log, found at `.minecraft/crash-reports/`
+    2) list of mods. just run `tree` or similar commands
+        
+    we are sorry that your usage of Neo has caused this error
+
+- type: textarea
+  id: crash-log
+  attributes:
+      label: Crash Log
+      description: check ## Required to upload for file location
+  validations:
+    required: true
+- type: checkboxes
+  id: agreements
+  attributes:
+    label: You must agree to the following
+    options:
+      - label: I agree that i have uploaded all required data, as outlined in the section labeled 'required to upload'
+        required: true
+      - label: I agree that any information i upload may contain identifiable information relating to my computer system
+        required: true

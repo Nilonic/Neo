@@ -74,6 +74,11 @@ jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}"}
     }
+    manifest {
+        attributes(
+            'Main-Class': 'nilon.neo.Main'
+        )
+    }
 }
 
 // configure the maven publication
