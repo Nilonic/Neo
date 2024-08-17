@@ -77,13 +77,18 @@ public abstract class MainMenuMixin extends Screen {
     }
     @Unique
     private String getRandomSplash() {
-        String[] randomSplash;
+        String[] randomSplash = new String[]{"What the dog doin?", "the sky is the limit... sometimes", "Minecraft: now with 100% more bugs", "Minecraft: now with 100% more battery-draining stuff", "what did i do?", "We support pride!"};
         if (isJune()) {
-            randomSplash = new String[]{generateRainbowText("What the dog doin?"), generateRainbowText("the sky is the limit... sometimes"), generateRainbowText("Minecraft: now with 100% more bugs"), generateRainbowText("Minecraft: now with 100% more battery-draining stuff"), generateRainbowText("what did i do?"), generateRainbowText("We support pride!")};
+            return generateRainbowText(randomSplash[Random.create().nextBetween(0, randomSplash.length - 1)]);
         } else {
-            randomSplash = new String[]{"What the dog doin?", "the sky is the limit... sometimes", "Minecraft: now with 100% more bugs", "Minecraft: now with 100% more battery-draining stuff", "what did i do?", generateRainbowText("We support pride!")};
+            var res = randomSplash[Random.create().nextBetween(0, randomSplash.length - 1)];
+            if (res.contains("We support pride")){
+                return generateRainbowText(res);
+            }
+            else{
+                return res;
+            }
         }
-        return randomSplash[Random.create().nextBetween(0, randomSplash.length - 1)];
     }
 
     @Unique

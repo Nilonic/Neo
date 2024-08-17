@@ -5,6 +5,5 @@
   "neo.modules.Kick_Self": "Kick Self",
   "neo.modules.Rainbow_GUI": "Rainbow GUI",
   "neo.gui.script.import": "Import a script",
-  "neo.gui.import.title": "enter the FULL PATH to the .lua file",
-  "neo.gui.script.button": "Import"
+  "neo.gui.import.title": "enter the FULL PATH to the .lua file"
 }

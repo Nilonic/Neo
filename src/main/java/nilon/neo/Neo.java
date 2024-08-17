@@ -25,7 +25,7 @@ public class Neo implements ModInitializer {
     private int tickCount;
     private int errorCount = 0;
 
-    private static boolean isDebug;
+    public static final boolean _DEBUG = true;
 
     public static File luaScriptsDir;
 
@@ -104,13 +104,5 @@ public class Neo implements ModInitializer {
             lastTime = currentTime;
             tickCount = 0;
         }
-    }
-
-    public static boolean isDebug() {
-        return isDebug;
-    }
-
-    public static void toggleDebug() {
-        isDebug = !isDebug;
     }
 }

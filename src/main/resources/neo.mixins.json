@@ -4,6 +4,7 @@
   "package": "nilon.neo.mixins",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "DisconnectMenuMixin",
     "MainMenuMixin",
     "MinecraftClientMixin",
     "PauseMenuMixin"

@@ -2,7 +2,6 @@ package nilon.neo.screens;
 
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.MultilineTextWidget;
 import net.minecraft.client.gui.widget.ScrollableTextWidget;
@@ -35,10 +34,8 @@ public class NeoScriptScreen extends Screen {
 
         // List all Lua scripts
         List<File> luaScripts = listLuaScripts();
-        //File runDirectory = MinecraftClient.getInstance().runDirectory;
 
         for (File script : luaScripts) {
-            //String relativePath = runDirectory.toPath().relativize(script.toPath()).toString();
             scriptListStr.append("%s\n".formatted(script.getName()));
         }
         scriptList = new ScrollableTextWidget(width / 2 - 100, 40, 200, height - 80, Text.literal(scriptListStr.toString()), textRenderer);
@@ -52,12 +49,6 @@ public class NeoScriptScreen extends Screen {
         int buttonY = height / 2 - 60;
         int buttonGap = 5;
 
-        // Open config.json Button
-        this.addDrawableChild(ButtonWidget.builder(Text.literal("Open config.json"), (button) -> {
-            // Your code to open config.json
-        }).dimensions(buttonX, buttonY, buttonWidth, buttonHeight).build());
-        buttonY += buttonHeight + buttonGap;
-
         // Exit Menu Button
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Exit Menu"), (button) -> {
             assert this.client != null;
@@ -65,20 +56,18 @@ public class NeoScriptScreen extends Screen {
         }).dimensions(buttonX, buttonY, buttonWidth, buttonHeight).build());
         buttonY += buttonHeight + buttonGap;
 
+        this.addDrawableChild(ButtonWidget.builder(Text.translatableWithFallback("neo.gui.script.import", "Import a script"), (button -> {
+            assert this.client != null;
+            this.client.setScreen(new ImportPathScreen(this));
+        })).dimensions(buttonX, buttonY, buttonWidth, buttonHeight).build());
+
+        buttonY += buttonHeight + buttonGap;
+
         // Exit Game Button
         this.addDrawableChild(ButtonWidget.builder(Text.literal("Exit Game"), (button) -> {
             assert this.client != null;
             this.client.stop();
         }).dimensions(buttonX, buttonY, buttonWidth, buttonHeight).build());
-        buttonY += buttonHeight + buttonGap;
-
-        // Debug Mode Toggle Button
-        String debugText = Neo.isDebug() ? "??!" : "???";
-        ButtonWidget debugButton = ButtonWidget.builder(Text.literal(debugText), (button) -> {
-            Neo.toggleDebug();
-            button.setMessage(Text.literal(Neo.isDebug() ? "??!" : "???"));
-        }).dimensions(buttonX, buttonY, buttonWidth, buttonHeight).tooltip(Tooltip.of(Text.literal("ooh, secret"))).build();
-        this.addDrawableChild(debugButton);
     }
 
 

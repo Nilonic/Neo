@@ -6,17 +6,20 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
 import nilon.neo.client.NeoClient;
 import nilon.neo.modules.Module;
+import org.jetbrains.annotations.Contract;
 import org.joml.Matrix4f;
 
 import java.awt.*;
 
 public class HUD {
     private static float hue = 1.0f; // Hue value for rainbow effect
-    private static Color color = Color.getHSBColor(hue, 1.0f, 1.0f);
-    public static void renderHud(DrawContext drawContext, float tickDelta) {
+
+    public static void renderHud(DrawContext drawContext, float ignoredTickDelta) {
+        Color color;
         if (NeoClient.isRainbowGui) {
             // Calculate rainbow color only when rainbow effect is enabled
             hue += 0.001f; // Adjust speed of color change by changing increment value
@@ -84,12 +87,11 @@ public class HUD {
                 int padding = 10; // Padding from the right edge of the screen
                 for (Module m : NeoClient.modules) {
                     int moduleColor = getCategoryColor(m.category);
-                    boolean isToggled = m.toggled;
-                    int textWidth = textRenderer.getWidth(m.name);
+                    int textWidth = textRenderer.getWidth(Text.translatable("neo.modules." + m.name));
                     int otherSideOfTheScreenWith10Padding = screenWidth - textWidth - padding;
                     if (!m.toggled)
                         continue;
-                    textRenderer.draw(m.name, otherSideOfTheScreenWith10Padding, 10 + (numOfActive * 10), moduleColor, false, matrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, 15728880);
+                    textRenderer.draw(Text.translatableWithFallback("neo.modules." + m.name, m.name), otherSideOfTheScreenWith10Padding, 10 + (numOfActive * 10), moduleColor, false, matrix, vertexConsumers, TextRenderer.TextLayerType.NORMAL, 0, 15728880);
                     numOfActive += 1;
                 }
 
@@ -98,6 +100,7 @@ public class HUD {
         }
     }
 
+    @Contract(pure = true)
     private static int getCategoryColor(Module.Category category) {
         switch (category){
             case COMBAT -> {
@@ -119,7 +122,7 @@ public class HUD {
         return 0x000000;
     }
 
-    private static double getTps(MinecraftClient client) {
+    private static double getTps(MinecraftClient ignoredClient) {
         return Neo.tps;
     }
 }
