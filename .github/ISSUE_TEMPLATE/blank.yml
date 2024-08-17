@@ -4,21 +4,16 @@ labels: [tpl]
 title: "[tpl]"
 
 body:
-  - type: markdown
+- type: markdown
+  attributes:
+    value: "## Welcome!"
+
+  - type: checkboxes
+    id: agreements-lmao
     attributes:
-      value: |
-        # READ THIS BEFORE OPENING AN ISSUE
-
-        This form is A BASE TEMPLATE. YOUR ISSUE WILL BE CLOSED IF YOU IGNORE THIS.
-        
-        DO NOT USE THIS FORM.
-
-    - type: checkboxes
-      id: agreements-lmao
-      attributes:
-        label: Agreements, please check both before continuing
-        options:
-          - label: I agree that my issue may go unanswered
-            required: true
-          - label: I agree that what is contained in the error log i have uploaded may contain information relating to my PC
-            required: true
+      label: Agreements, please check both before continuing
+      options:
+        - label: I agree that my issue may go unanswered
+          required: true
+        - label: I agree that what is contained in the error log i have uploaded may contain information relating to my PC
+          required: true
