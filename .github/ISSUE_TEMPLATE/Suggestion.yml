@@ -1,0 +1,53 @@
+name: Suggestion
+description: For suggesting features
+labels: [Suggestion]
+title: "[Suggestion] <title>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Suggesting a feature
+        
+        Hello, and thank you for taking the time to suggest a feature for Neo Client
+        
+        If you don't hear back from us within a month, don't worry, we're probably busy, but we'll get back to you soon!
+        
+        ## Information Required
+        please ensure that everything here is uploaded
+        1) A **detailed** description of the feature
+        2) Is it related to a bug?
+        3) What scope is it (either lua or java)
+        
+        Thank you for taking the time to fill out this form
+
+  - type: textarea
+    id: description
+    attributes:
+      label: A Detailed Description of the feature goes here!
+      description: Make sure it's detailed!
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Which scope is it?
+      options:
+        - Lua
+        - Java
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: Bug-Related
+    attributes:
+      label: is it related to a bug?
+      options:
+        - label: yes
+        - label: no
+
+  - type: input
+    id: prevalence
+    attributes:
+      label: Bug prevalence
+      description: "If it's related to a bug, enter the URL here"
