@@ -39,14 +39,14 @@ body:
       required: true
 
   - type: checkboxes
-    id: Bug-Related
+    id: checkbox
     attributes:
-      label: is it related to a bug?
+      label: Please select one of the following
       options:
-        - label: yes
-        - label: no
-    validations:
-      required: true
+        - label: Yes, it is bug related
+          required: false
+        - label: No, it is not bug related
+          required: false
 
   - type: input
     id: prevalence
