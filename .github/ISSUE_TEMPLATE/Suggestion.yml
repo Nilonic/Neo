@@ -33,8 +33,8 @@ body:
     attributes:
       label: Which scope is it?
       options:
-        - label: Lua
-        - label: Java
+        - Lua
+        - Java
     validations:
       required: true
 
@@ -45,6 +45,8 @@ body:
       options:
         - label: yes
         - label: no
+    validations:
+      required: true
 
   - type: input
     id: prevalence
