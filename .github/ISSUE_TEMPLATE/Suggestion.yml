@@ -1,37 +1,38 @@
-name: Suggestion
-description: For suggesting features
-labels: [Suggestion]
-title: "[Suggestion] <title>"
+name: Feature Suggestion
+description: Use this template to suggest new features for Neo Client
+labels: [Feature Request]
+title: "[Feature Request] <Your Feature Title Here>"
 body:
   - type: markdown
     attributes:
       value: |
-        # Suggesting a feature
+        # Suggest a New Feature
         
-        Hello, and thank you for taking the time to suggest a feature for Neo Client
+        Hello! Thank you for taking the time to suggest a new feature for Neo Client.
         
-        If you don't hear back from us within a month, don't worry, we're probably busy, but we'll get back to you soon!
+        We truly value your input and aim to review all suggestions promptly. However, if you don't hear back from us within a month, please be patient as we might be busy with other tasks. Rest assured, we will get back to you as soon as possible!
         
         ## Information Required
-        please ensure that everything here is uploaded
-        1) A **detailed** description of the feature
-        2) Is it related to a bug?
-        3) What scope is it (either lua or java)
+        To help us understand your suggestion better, please provide the following information:
+        1) A **detailed** description of the feature you are suggesting.
+        2) Indicate if the feature is related to an existing bug.
+        3) Specify the scope of the feature (either Lua or Java).
         
-        Thank you for taking the time to fill out this form
+        Thank you for providing all necessary details and helping us improve Neo Client!
 
   - type: textarea
     id: description
     attributes:
-      label: A Detailed Description of the feature goes here!
-      description: Make sure it's detailed!
+      label: Detailed Feature Description
+      description: Provide a comprehensive and detailed description of the feature you are suggesting.
     validations:
       required: true
 
   - type: dropdown
     id: scope
     attributes:
-      label: Which scope is it?
+      label: Feature Scope
+      description: Select the relevant scope for your feature suggestion.
       options:
         - Lua
         - Java
@@ -39,17 +40,20 @@ body:
       required: true
 
   - type: checkboxes
-    id: checkbox
+    id: bug_related
     attributes:
-      label: Please select one of the following
+      label: Is this feature related to a bug?
+      description: Select whether your feature suggestion is related to an existing bug.
       options:
-        - label: Yes, it is bug related
+        - label: Yes, it is bug-related
           required: false
-        - label: No, it is not bug related
+        - label: No, it is not bug-related
           required: false
 
   - type: input
-    id: prevalence
+    id: bug_url
     attributes:
-      label: Bug prevalence
-      description: "If it's related to a bug, enter the URL here"
+      label: Bug Report URL
+      description: If your feature is related to a bug, please enter the URL to the bug report here.
+    validations:
+      required: false
