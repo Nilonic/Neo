@@ -12,7 +12,10 @@ import net.minecraft.client.network.ServerAddress;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.text.Text;
 import nilon.neo.client.NeoClient;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -30,7 +33,8 @@ public abstract class DisconnectMenuMixin extends Screen {
 
     @Inject(at= @At("HEAD"), method = "init")
     private void init(CallbackInfo ci){
-        if (!NeoClient.lastIpLocal) {
+        if (!NeoClient.lastIpLocal && NeoClient.lastIP != null) { // I'm going to fix this later
+            System.out.println(NeoClient.lastIP);
             button = (ButtonWidget.builder(Text.literal("Reconnect"), (button -> {
                 MinecraftClient minecraftClient = MinecraftClient.getInstance();
                 ConnectScreen.connect(new TitleScreen(), minecraftClient, ServerAddress.parse(NeoClient.lastIP), new ServerInfo("idk", NeoClient.lastIP, ServerInfo.ServerType.OTHER), false, null);
@@ -38,11 +42,7 @@ public abstract class DisconnectMenuMixin extends Screen {
         }
     }
 
-    /**
-     * @author Nilonic
-     * @reason To prevent a crash
-     */
-    @Overwrite
+    @Override
     public void initTabNavigation(){
         if (!NeoClient.lastIpLocal) {
             this.grid.add(button);

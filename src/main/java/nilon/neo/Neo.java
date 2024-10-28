@@ -65,7 +65,7 @@ public class Neo implements ModInitializer {
         catch (Exception e){
             errorCount += 1;
         }
-        if (errorCount == 0)
+        if (errorCount < 1)
             Log.info("Initialized Neo successfully");
         else {
             Log.error("Neo encountered an error initializing");

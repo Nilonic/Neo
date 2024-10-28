@@ -76,19 +76,23 @@ public abstract class MainMenuMixin extends Screen {
         return rainbowText.toString();
     }
     @Unique
+    String splash = "";
+    @Unique
     private String getRandomSplash() {
-        String[] randomSplash = new String[]{"What the dog doin?", "the sky is the limit... sometimes", "Minecraft: now with 100% more bugs", "Minecraft: now with 100% more battery-draining stuff", "what did i do?", "We support pride!"};
-        if (isJune()) {
-            return generateRainbowText(randomSplash[Random.create().nextBetween(0, randomSplash.length - 1)]);
-        } else {
-            var res = randomSplash[Random.create().nextBetween(0, randomSplash.length - 1)];
-            if (res.contains("We support pride")){
-                return generateRainbowText(res);
-            }
-            else{
-                return res;
+        if (splash.isEmpty()) {
+            String[] randomSplash = new String[]{"What the dog doin?", "the sky is the limit... sometimes", "Minecraft: now with 100% more bugs", "Minecraft: now with 100% more battery-draining stuff", "what did i do?", "We support pride!"};
+            if (isJune()) {
+                splash = generateRainbowText(randomSplash[Random.create().nextBetween(0, randomSplash.length - 1)]);
+            } else {
+                var res = randomSplash[Random.create().nextBetween(0, randomSplash.length - 1)];
+                if (res.contains("We support pride")) {
+                    splash = generateRainbowText(res);
+                } else {
+                    splash = res;
+                }
             }
         }
+        return splash;
     }
 
     @Unique
@@ -104,7 +108,7 @@ public abstract class MainMenuMixin extends Screen {
 
     /**
      * @author Nilonic
-     * @reason just 2 add more buttons
+     * @reason just to add more buttons
      */
     @Overwrite
     private void initWidgetsNormal(int y, int spacingY) {

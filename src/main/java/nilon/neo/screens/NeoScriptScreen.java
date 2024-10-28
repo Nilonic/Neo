@@ -50,7 +50,7 @@ public class NeoScriptScreen extends Screen {
         int buttonGap = 5;
 
         // Exit Menu Button
-        this.addDrawableChild(ButtonWidget.builder(Text.literal("Exit Menu"), (button) -> {
+        this.addDrawableChild(ButtonWidget.builder(Text.translatable("gui.cancel"), (button) -> {
             assert this.client != null;
             this.client.setScreen(null);
         }).dimensions(buttonX, buttonY, buttonWidth, buttonHeight).build());

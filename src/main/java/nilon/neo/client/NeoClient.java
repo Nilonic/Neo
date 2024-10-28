@@ -7,10 +7,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import nilon.neo.Neo;
 import nilon.neo.modules.Module;
-import nilon.neo.modules.clientModules.AutoSprint;
-import nilon.neo.modules.clientModules.Dummy;
-import nilon.neo.modules.clientModules.KickSelf;
-import nilon.neo.modules.clientModules.Rainbow;
+import nilon.neo.modules.clientModules.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,14 +24,16 @@ public class NeoClient implements ClientModInitializer {
     public static String lastIP;
     public static boolean lastIpLocal;
 
+    public static boolean isFreecam = false;
+
     @Override
     public void onInitializeClient() {
         Module[] modulesToInitialize;
         if (Neo._DEBUG) {
-            modulesToInitialize = new Module[]{new Dummy(), new Rainbow(), new AutoSprint(), new KickSelf()};
+            modulesToInitialize = new Module[]{new Dummy(), new Rainbow(), new AutoSprint(), new Freecam()};
         }
         else{
-            modulesToInitialize = new Module[] {new Rainbow(), new AutoSprint(), new KickSelf()};
+            modulesToInitialize = new Module[] {new Rainbow(), new AutoSprint(), new KickSelf(), new PanicQuit()};
         }
         int doneModules = 1;
 
